@@ -1,6 +1,7 @@
 *{
     margin:0;
     font-family: Oswald, "sans serif typefaces";
+    color:blue
 }
 
 body{
@@ -21,12 +22,17 @@ body{
 .topNav>.title>h1>span{
     color: yellow;
 }
-.topNav>.search{
+.search{
     width: 100%;
-    margin-left: 3em;
+    margin-left: 0.5em;
+    
+    padding-right: 5em;
 }
-.topNav>.search>input{
-    margin-right: 1em;
-    margin-top: 7vh;
+.search>input{
+    margin-top: 2vh;
     width: 30%;
+}
+
+.display>li{
+    list-style: none;
 }
