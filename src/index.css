@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    font-family: Oswald, "sans serif typefaces";
+}
+
+body{
+    background-image: url('https://wallpaperaccess.com/full/2029165.jpg');
+}
+
+.topNav{
+    background-color: rgba(99, 96, 96, 0.7);
+    display: flex;
+    justify-content: space-between;
+}
+.topNav>.title>h1{
+    padding: 1vh;
+    text-transform: uppercase;
+    line-height: 0.8;
+    color: red;
+}
+.topNav>.title>h1>span{
+    color: yellow;
+}
+.topNav>.search{
+    width: 100%;
+    margin-left: 3em;
+}
+.topNav>.search>input{
+    margin-right: 1em;
+    margin-top: 7vh;
+    width: 30%;
+}
