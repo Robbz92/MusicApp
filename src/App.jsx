@@ -8,14 +8,32 @@ import {
 } from "react-router-dom"
 
 import Music from './components/Music'
+import Watch from './pages/Watch'
+import Albums from './pages/Albums'
+import Album from './pages/Album'
 
 function App() {
   const [inputText, setInputText] = useState()
   let textInput = React.createRef();
 
+  const [songName, setSongName] = useState([])
+
   function searchFunction() {
     const value = textInput.current.value;
-    setInputText({ value })
+    setInputText(value)
+  }
+
+  // we will use async/await to fetch this data
+  async function fetchSearch() {
+    if (inputText != null) {
+      let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/search/" + inputText)
+      const data = await result.json();
+      const { content } = data
+
+      // store the data into our books variable
+      console.log(content)
+      setSongName(content);
+    }
   }
 
   return (
@@ -26,21 +44,30 @@ function App() {
         </div>
 
         <nav>
+          <Link to="/watch">Watch</Link>
           <Link to="/"></Link>
         </nav>
       </div>
 
       <div>
         <div className="search">
-            <input type="text" ref={textInput}  placeholder="Search for music/artists or albums"></input>
-            <button onClick={searchFunction}>search</button>
+          <input type="text" ref={textInput} placeholder="Search for music/artists or albums" onChange={searchFunction}></input>
+          <button onClick={fetchSearch}>Search</button>
         </div>
       </div>
 
       <Switch>
-        <Route path="/">
-          <Music inputText={inputText}/>
+        <Route exact path="/">
+          <Music data={songName} />
         </Route>
+        <Route path="/albums">
+         <Albums data={songName} />
+        </Route>
+        <Route path="/album/:id">
+          <Album /> 
+        </Route>
+
+        <Route path="/watch/:id" component={Watch} />
       </Switch>
     </Router>
   )

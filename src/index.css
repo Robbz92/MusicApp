@@ -13,26 +13,40 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
 .topNav>.title>h1{
     padding: 1vh;
     text-transform: uppercase;
     line-height: 0.8;
     color: red;
 }
+
 .topNav>.title>h1>span{
     color: yellow;
 }
+
 .search{
     width: 100%;
     margin-left: 0.5em;
-    
-    padding-right: 5em;
-}
-.search>input{
     margin-top: 2vh;
+}
+
+.search>input{
+    margin-right: 1em;
     width: 30%;
 }
 
-.display>li{
+.music>.btnSearch{
+    margin-left: 0.5em;
+    margin-top: 0.5vh;
+}
+
+.music>.displayContent{
+    margin-top: 0.5em;
     list-style: none;
+}
+
+.music>.displayContent>li>p{
+    background-color: rgba(99, 96, 96, 0.7);
+    color:green
 }
