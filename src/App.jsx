@@ -32,8 +32,9 @@ function App() {
     const currentPath = window.location.pathname;
     console.log(currentPath)
     if (currentPath == "/") return "https://yt-music-api.herokuapp.com/api/yt/search/"
-    // if (currentPath == "/album") return "https://yt-music-api.herokuapp.com/api/yt/albums/"
+    if (currentPath == "/album") return "https://yt-music-api.herokuapp.com/api/yt/albums/"
     if (currentPath == "/artist") return "https://yt-music-api.herokuapp.com/api/yt/artists/"
+    if (currentPath == "/watch") return "https://yt-music-api.herokuapp.com/api/yt/songs/"
   }
 
   // we will use async/await to fetch this data
@@ -47,6 +48,8 @@ function App() {
       // store the data into our books variable
       console.log(content)
       setSearchPhrase(content);
+      
+      textInput.current.value = ''
     }
   }
 
@@ -58,10 +61,10 @@ function App() {
         </div>
 
         <nav>
+          <Link to="/">Home</Link>
           <Link to="/artist">Artist</Link>
-          {/* <Link to="/album">Album</Link> */}
+          <Link to="/album"> Album</Link>
           <Link to="/watch">Watch</Link>
-          <Link to="/"></Link>
         </nav>
       </div>
 
@@ -76,17 +79,17 @@ function App() {
         <Route exact path="/">
           <Music data={searchPhrase} />
         </Route>
-        {/* <Route path="/albums" >
-         <Albums/>
-        </Route> */}
         <Route path="/album">
           <Album data={searchPhrase}/> 
         </Route>
         <Route path="/artist">
           <Artist data={searchPhrase}/> 
         </Route>
+        <Route path="/watch">
+          <Watch data={searchPhrase}/>
+        </Route>
+        {/* <Route path="/watch/:id" component={Watch} /> */}
 
-        <Route path="/watch/:id" component={Watch} />
       </Switch>
     </Router>
   )

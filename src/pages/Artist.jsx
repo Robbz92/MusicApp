@@ -7,8 +7,12 @@ function Artist(props) {
         <div className="displayArtist">
              {props.data.map((item, index) => (
                 <li key={index}>
-                    <p>{item.type} : {item.name} </p>
-                    <img src={item.thumbnails[0].url}/>
+                    <div className="cont">
+                        <img src={item.thumbnails[0].url}/>
+                        <p>{item.type} : {item.name} </p>
+                    </div>
+                    
+                    <br></br>
                 </li>
              ))} 
         </div>

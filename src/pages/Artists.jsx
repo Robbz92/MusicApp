@@ -1,14 +1,9 @@
 import React from 'react'
 
-export default function Artists({data}) {
-    console.log(data)
+export default function Artists() {
+    
     return (
         <div>
-            {data.map((item, index) =>{
-                <li key={index}>
-                    <p>{item.type}</p>
-                </li>
-            })}
         </div>
     )
 }

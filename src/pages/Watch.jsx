@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Watch(props) {
     /* props.match.params.id == :id från /watch/:id */
-
     // accessible variable for calling player functions
+
     let player;
 
     // gets called automatically when YouTube player loads
-    function onYouTubeIframeAPIReady() {
+    function onYouTubeIframeAPIReady(id) {
         player = new YT.Player('yt-player', {
             height: '300',
             width: '400',
-            videoId: props.match.params.id,
+            videoId: id,
             events: {
-                'onStateChange': onPlayerStateChange
+                'onStateChange': onPlayerStateChange,
+                'onReady': onPlayerReady,
             }
         });
     }
@@ -24,16 +25,30 @@ function Watch(props) {
         if (event.data != YT.PlayerState.PLAYING) return
     }
 
-    useEffect(() => {
-        onYouTubeIframeAPIReady()
-    }, [])
+    function onPlayerReady(id) {
+        console.log("My plaer is onReady");
+        player.playVideo()
+    }
+
+    function playSongTrack(id){
+        console.log("Hey " + id)
+        onYouTubeIframeAPIReady(id)
+    }
 
     return (
-        <div>
-            <button>Play</button>
-            <button>Pause</button>
-            <button>Next</button>
+        <div className="playMusic">
             <div id="yt-player"></div>
+
+            {props.data.map((item, index) => (
+                <li key={index}>
+                    <p>{item.type} : {item.name}</p>
+                    <p>{item.videoId}</p>
+
+                    <button onClick={playSongTrack(item.videoId)}>Play</button>
+                    <button >Pause</button>
+                    <button>Next</button>
+                </li>
+            ))}
         </div>
     )
 }

@@ -1,17 +1,16 @@
 *{
     margin:0;
     font-family: Oswald, "sans serif typefaces";
-    color:blue
+    color:white
 }
 
 body{
     background-image: url('https://wallpaperaccess.com/full/2029165.jpg');
+    list-style: none;
 }
 
 .topNav{
     background-color: rgba(99, 96, 96, 0.7);
-    display: flex;
-    justify-content: space-between;
 }
 
 .topNav>.title>h1{
@@ -25,20 +24,34 @@ body{
     color: yellow;
 }
 
+.topNav>nav{
+    margin: 0.5em 0.5em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.topNav>nav>a{
+    text-decoration: none;
+    color: white;
+}
+.topNav>nav>a:hover{
+    background-color: red;
+}
 .search{
     width: 100%;
-    margin-left: 0.5em;
+    display: flex;
+    justify-content: center;
     margin-top: 2vh;
 }
 
 .search>input{
+    color: black;
     margin-right: 1em;
     width: 30%;
 }
 
-.music>.btnSearch{
-    margin-left: 0.5em;
-    margin-top: 0.5vh;
+.search>button{
+    color: black;
 }
 
 .music>.displayContent{
@@ -48,13 +61,37 @@ body{
 
 .music>.displayContent>li>p{
     background-color: rgba(99, 96, 96, 0.7);
-    color:green
+    color:white
 }
 
 .displayArtist{
     padding:0.5em;
 }
 
-.displayArtist>li{
-    list-style: none;
+.displayArtist>li>.cont{
+    display: flex;
+    justify-content: baseline;
+}
+
+.displayArtist>li>.cont>p{
+    margin: 2em 1em;
+}
+
+.displayAlbum{
+    padding: 0.5em;
+}
+
+.displayAlbum>li>.cont{
+    display: flex;
+    justify-content: baseline;
+}
+
+.displayAlbum>li>.cont>p{
+    margin: 2em 1em;
+}
+.playMusic>li{
+    padding: 0.5em 0.5em
+}
+.playMusic>li>button{
+    color: black;
 }
