@@ -13,7 +13,6 @@ function Watch(props) {
             width: '400',
             videoId: props.match.params.id,
             events: {
-                'onReady': console.log("ready"),
                 'onStateChange': onPlayerStateChange
             }
         });
@@ -22,12 +21,6 @@ function Watch(props) {
     // this function triggers when we change song in player
     // can be used to update things, like counters
     function onPlayerStateChange(event) {
-        console.log(event);
-
-        console.log("Is muted:" + event.target.isMuted())
-        event.target.mute()
-        console.log("Is muted:" + event.target.isMuted())
-
         if (event.data != YT.PlayerState.PLAYING) return
     }
 
@@ -37,6 +30,9 @@ function Watch(props) {
 
     return (
         <div>
+            <button>Play</button>
+            <button>Pause</button>
+            <button>Next</button>
             <div id="yt-player"></div>
         </div>
     )
