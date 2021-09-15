@@ -7,11 +7,12 @@ import {
   Link
 } from "react-router-dom"
 
-// importerade komponenter
-import Music from './components/Music'
-import Watch from './pages/Watch'
-import Artist from './pages/Artist'
-import Album from './pages/Album'
+import Album from './pages/Album';
+import Artist from './pages/Artist';
+import Sound from './pages/Sound'; 
+import Home from './pages/Home';
+
+import SearchResults from './components/SearchResults'
 
 function App() {
   // sparar värdet från input
@@ -48,8 +49,6 @@ function App() {
       // store the data into our books variable
       console.log(content)
       setSearchPhrase(content);
-      
-      textInput.current.value = ''
     }
   }
 
@@ -59,13 +58,6 @@ function App() {
         <div className="title">
           <h1>The <br></br><span>Music</span><br></br> Player</h1>
         </div>
-
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/artist">Artist</Link>
-          <Link to="/album"> Album</Link>
-          <Link to="/watch">Watch</Link>
-        </nav>
       </div>
 
       <div>
@@ -76,20 +68,10 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path="/">
-          <Music data={searchPhrase} />
-        </Route>
-        <Route path="/album">
-          <Album data={searchPhrase}/> 
-        </Route>
-        <Route path="/artist">
-          <Artist data={searchPhrase}/> 
-        </Route>
-        <Route path="/watch">
-          <Watch data={searchPhrase}/>
-        </Route>
-        {/* <Route path="/watch/:id" component={Watch} /> */}
-
+        <Route path="/" render={(routeProps) => <SearchResults {...routeProps} data={searchPhrase} />} />
+        <Route path="/artist/:id" component={Artist}/>
+        <Route path="/album/:id" component={Album}/>
+        <Route path="/sound/:id" component={Sound}/>       
       </Switch>
     </Router>
   )

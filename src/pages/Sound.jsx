@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Artists() {
-    
+function Sound() {
     return (
         <div>
+            
         </div>
     )
 }
+
+export default Sound

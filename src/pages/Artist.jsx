@@ -1,20 +1,12 @@
 import React from 'react'
 
 function Artist(props) {
-    console.log(props)
+    const id = props.match.id;
+    // UseEffect som hämtar informationen från API:et baserat på ID och visa det i komponenten
 
     return (
-        <div className="displayArtist">
-             {props.data.map((item, index) => (
-                <li key={index}>
-                    <div className="cont">
-                        <img src={item.thumbnails[0].url}/>
-                        <p>{item.type} : {item.name} </p>
-                    </div>
-                    
-                    <br></br>
-                </li>
-             ))} 
+        <div>
+            
         </div>
     )
 }
