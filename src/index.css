@@ -13,14 +13,17 @@ body{
     background-color: rgba(99, 96, 96, 0.7);
 }
 
-.topNav>.title>h1{
+.topNav>.title>a{
+    text-decoration: none;
+}
+.topNav>.title>a>h1{
     padding: 1vh;
     text-transform: uppercase;
     line-height: 0.8;
     color: red;
 }
 
-.topNav>.title>h1>span{
+.topNav>.title>a>h1>span{
     color: yellow;
 }
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 function Sound(props) {
     // hämtar enbart på låg
     const { id } = props.match.params
-    
+
     // const type = id.length > 20 ? "playlist" : "song";
 
     // const [playlist, setPlayList] = useState([id]); // Denna ska vara en lista med strängar
@@ -57,7 +57,7 @@ function Sound(props) {
         onYouTubeIframeAPIReady()
     }, [])
 
-    // <Component data={getData()} />
+   // Jag vill kunna dela en låt på en länk
     return (
         <div className="soud-player-buttun-container">
             <button className="soud-player-button" onClick={() => handleActions("play")}>Play</button>

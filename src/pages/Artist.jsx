@@ -16,6 +16,7 @@ function Artist(props) {
     
     if (result === null) return <div>Loading...</div>
     if (result.error) return <div>Error: {result.error}</div>
+    // jag vill kunna dela artist på en länk
     return (
         <div>
             <div>
