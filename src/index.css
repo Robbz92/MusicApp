@@ -7,7 +7,6 @@
 body{
     background-image: url('https://wallpaperaccess.com/full/2029165.jpg');
     list-style: none;
- 
 }
 
 .topNav{
@@ -41,13 +40,13 @@ body{
 .search{
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 2vh;
 }
 
 .search>input{
     color: black;
-    margin-right: 1em;
+    margin: 1em 0.5em;
     width: 30%;
 }
 
@@ -57,12 +56,30 @@ body{
 
 .searchResult>div{
     display: flex;
+    width: 100%; /* Sätter max längd. */
+    flex-wrap: wrap; /* Använder sig av wrapper ifall content går över max with. */
     background-color: rgba(99, 96, 96, 0.5);
 }
 
 .card-title, .card-img, .card-year, .card-type{
-    padding: 0.5em 2em;
+
 } 
 .soud-player-button{
     color: black;
+}
+
+.FilterButton{
+    margin: 0.5vh 0.5em ;
+    color: black;
+}
+
+.card-link{
+
+}
+
+.card-link > div {
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

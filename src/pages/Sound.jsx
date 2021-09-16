@@ -1,7 +1,25 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Sound(props) {
-    const {id} = props.match.params
+    // hämtar enbart på låg
+    const { id } = props.match.params
+    
+    // const type = id.length > 20 ? "playlist" : "song";
+
+    // const [playlist, setPlayList] = useState([id]); // Denna ska vara en lista med strängar
+    // const [playlistIndex, setPlaylistIndex] = useState(0);
+    // const [ready, setReady] = useState(false);
+
+    // async function getPlaylist() {
+    //     let herokuappAPI = "https://yt-music-api.herokuapp.com/api/yt/playlist/"
+    //     let result = await fetch(herokuappAPI + id)
+    //     const data = await result.json();
+    //     const { content } = data
+
+    //     // om det är en play list sparar vi allt i useState.
+    //     const playList = content.map((videoId) => videoId.videoId)
+    //     return playList;
+    // } 
 
     let player;
 
@@ -12,7 +30,7 @@ function Sound(props) {
             width: '0',
             videoId: id,
             events: {
-                'onStateChange': onPlayerStateChange
+                'onStateChange': onPlayerStateChange,
             }
         });
     }
@@ -23,15 +41,22 @@ function Sound(props) {
         if (event.data != YT.PlayerState.PLAYING) return
     }
 
-    useEffect(() => {
-        onYouTubeIframeAPIReady()
-    }, [])
-
-    const handleActions = (action) =>{
+    const handleActions = (action) => {
         if (!player) return
         if (action === "play") return player.playVideo()
         if (action === "pause") return player.pauseVideo()
     }
+
+    // Om vi är på index 0, ladda index 1
+    const loadSong = (id) => {
+        if (!player) return
+        player.loadVideoById(id)
+    } 
+    
+    useEffect(() => {
+        onYouTubeIframeAPIReady()
+    }, [])
+
     // <Component data={getData()} />
     return (
         <div className="soud-player-buttun-container">
@@ -39,7 +64,7 @@ function Sound(props) {
             <button className="soud-player-button" onClick={() => handleActions("pause")}>Pause</button>
             <button className="soud-player-button">Next</button>
             <div id="yt-player"></div>
-      </div>
+        </div>
     )
 }
 
