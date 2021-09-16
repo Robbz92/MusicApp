@@ -10,7 +10,6 @@ import {
 import Album from './pages/Album';
 import Artist from './pages/Artist';
 import Sound from './pages/Sound'; 
-import Home from './pages/Home';
 
 import SearchResults from './components/SearchResults'
 
@@ -68,7 +67,7 @@ function App() {
       </div>
 
       <Switch>
-        <Route path="/" render={(routeProps) => <SearchResults {...routeProps} data={searchPhrase} />} />
+        <Route exact path="/" render={(routeProps) => <SearchResults {...routeProps} data={searchPhrase} />} />
         <Route path="/artist/:id" component={Artist}/>
         <Route path="/album/:id" component={Album}/>
         <Route path="/sound/:id" component={Sound}/>       
