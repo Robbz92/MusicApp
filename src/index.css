@@ -1,0 +1,88 @@
+*{
+    margin:0;
+    font-family: Oswald, "sans serif typefaces";
+    color:white
+}
+
+body{
+    background-image: url('https://wallpaperaccess.com/full/2029165.jpg');
+    list-style: none;
+}
+
+.topNav{
+    background-color: rgba(99, 96, 96, 0.7);
+}
+
+.topNav>.title>a{
+    text-decoration: none;
+}
+.topNav>.title>a>h1{
+    padding: 1vh;
+    text-transform: uppercase;
+    line-height: 0.8;
+    color: red;
+}
+
+.topNav>.title>a>h1>span{
+    color: yellow;
+}
+
+.topNav>nav{
+    margin: 0.5em 0.5em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.topNav>nav>a{
+    text-decoration: none;
+    color: white;
+}
+.topNav>nav>a:hover{
+    background-color: red;
+}
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+
+.search>input{
+    color: black;
+    margin: 1em 0.5em;
+    width: 30%;
+}
+
+.search>button{
+    color: black;
+}
+
+.searchResult>div{
+    display: flex;
+    width: 100%; /* Sätter max längd. */
+    flex-wrap: wrap; /* Använder sig av wrapper ifall content går över max with. */
+    background-color: rgba(99, 96, 96, 0.5);
+}
+
+.card-title, .card-img, .card-year, .card-type{
+
+} 
+.soud-player-button{
+    color: black;
+}
+
+.FilterButton{
+    margin: 0.5vh 0.5em ;
+    color: black;
+}
+
+.card-link{
+
+}
+
+.card-link > div {
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
