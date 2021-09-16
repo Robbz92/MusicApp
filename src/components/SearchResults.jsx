@@ -51,14 +51,17 @@ function SearchResults(props) {
       <div>
         {artists.map(artist => <Card key={artist.browseId} imgUrl={artist.thumbnails[0].url} title={artist.name} subtitle="" id={artist.browseId} url={"/artist/" + artist.browseId} />)}
       </div>
+    
       <h2>Albums</h2>
       <div>
         {albums.map(album => <Card key={album.browseId} imgUrl={album.thumbnails[0].url} title={album.name} subtitle="" id={album.browseId} url={"/album/" + album.browseId} year={album.year} />)}
       </div>
+
       <h2>Songs</h2>
       <div>
-        {songs.map(song => <Card key={song.videoId} imgUrl={""} title={song.name} subtitle="" id={song.videoId} url={"/sound/" + song.videoId} />)}
+        {songs.map(song => <Card key={song.videoId} imgUrl={song.thumbnails[0].url} title={song.name} subtitle="" id={song.videoId} url={"/sound/" + song.videoId} />)}
       </div>
+      
       <h2>Playlists</h2>
       <div>
         {playlists.map(playlist => <Card key={playlist.browseId} imgUrl={playlist.thumbnails[0].url} title={playlist.name} subtitle="" id={playlist.browseId} url={"/playlist/" + playlist.browseId} type={playlist.type} />)}

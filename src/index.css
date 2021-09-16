@@ -60,21 +60,9 @@ body{
     background-color: rgba(99, 96, 96, 0.5);
 }
 
-.card-link{
-
-}
-
-.card-title{
-    padding: 0 2em;
-}
-
-.card-img{
-    padding: 0 2em;
-}
-.card-year{
-    padding: 0 2em;
-}
-
+.card-title, .card-img, .card-year, .card-type{
+    padding: 0.5em 2em;
+} 
 .soud-player-button{
     color: black;
 }
