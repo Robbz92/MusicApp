@@ -86,3 +86,7 @@ body{
     justify-content: center;
     flex-direction: column;
 }
+
+.artist-share-link, .album-share-link, .sound-share-link{
+    color: black;
+}
