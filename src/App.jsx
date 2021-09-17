@@ -16,7 +16,7 @@ import SearchResults from './components/SearchResults'
 function App() {
   // sparar värdet från input
   const [inputText, setInputText] = useState(null)
-  const [category, setCategory] = useState("all"); // "all", "album", "artist", "sound"
+  const [category, setCategory] = useState(); // "all", "album", "artist", "sound"
   const categories = ["all", "album", "artist", "sound", "playlist"]
 
   let textInput = React.createRef();

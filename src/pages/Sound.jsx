@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 function Sound(props) {
     // hämtar enbart på låg
     const { id } = props.match.params
+    console.log(props)
 
     // const type = id.length > 20 ? "playlist" : "song";
 
@@ -57,6 +58,16 @@ function Sound(props) {
         onYouTubeIframeAPIReady()
     }, [])
 
+    const linkSoung = () => {
+
+        const copyText = "http://localhost:3000"+ props.location.pathname
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText);
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText);
+    }
+
    // Jag vill kunna dela en låt på en länk
     return (
         <div className="soud-player-buttun-container">
@@ -64,6 +75,7 @@ function Sound(props) {
             <button className="soud-player-button" onClick={() => handleActions("pause")}>Pause</button>
             <button className="soud-player-button">Next</button>
             <div id="yt-player"></div>
+            <button className="sound-share-link" onClick={() => linkSoung()}>Share link</button>
         </div>
     )
 }
