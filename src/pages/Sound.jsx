@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 function Sound(props) {
     /**
@@ -8,6 +8,7 @@ function Sound(props) {
 
     let id = ""
     let browseId = ""
+    let player = useRef(null); // används som en variabel som behåller värdet vid varje rendering.
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
@@ -26,12 +27,10 @@ function Sound(props) {
         browseId = browseId.slice(2) // tar bort första 2 chars för att få fram rätt spellista.
     }
 
-    let player;
-
     // gets called automatically when YouTube player loads
     function onYouTubeIframeAPIReady() {
         console.log(id)
-        player = new YT.Player('yt-player', {
+        player.current = new YT.Player('yt-player', {
             height: '0',
             width: '0',
             videoId: id,
@@ -58,10 +57,11 @@ function Sound(props) {
     // can be used to update things, like counters
     function onPlayerStateChange(event) {
        // console.log(event)
+        console.log(player)
+         const { author, title } = player.current.getVideoData()
 
-        // const { author, title } = player.getVideoData()
-        // setTitle(title)
-        // setAuthor(author)
+        setTitle(title)
+        setAuthor(author)
 
         if (event.data != YT.PlayerState.PLAYING) return
     }
@@ -72,21 +72,20 @@ function Sound(props) {
     const handleActions = (action) => {
         if (!player) return
 
-        if (action === "play" && type === "song") return player.playVideo()
-        else if (action === "pause") return player.pauseVideo()
+        if (action === "play" && type === "song") return player.current.playVideo()
+        else if (action === "pause") return player.current.pauseVideo()
 
         else if (action === "play" && type === "playlist") {
-            console.log(type)
-            player.loadPlaylist(browseId)
-            player.playVideo()
+            player.current.loadPlaylist(browseId)
+            player.current.playVideo()
         }
 
         else if (action === "next" && type === "playlist") {
-            player.nextVideo()
+            player.current.nextVideo()
         }
 
         else if (action === "previous" && type === "playlist") {
-            player.previousVideo()
+            player.current.previousVideo()
         }
     }
 
