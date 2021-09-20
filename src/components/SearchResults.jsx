@@ -15,9 +15,8 @@ function SearchResults(props) {
    */
   function playListArrayOrObject(playlist){
     if(typeof(playlist.thumbnails.url) === "string") return playlist.thumbnails.url
-    console.log(typeof(playlist.thumbnails.url))
-    console.log(playlist.thumbnails.url)
-    return  playlist.thumbnails[0].url
+
+    return playlist.thumbnails[0].url
   }
 
   return (
@@ -25,21 +24,21 @@ function SearchResults(props) {
       { artists.length > 0 && <>
         <h2>Artists</h2>
         <div className="searchResult-results">
-          {artists.map(artist => <Card key={artist.browseId} imgUrl={artist.thumbnails[0].url} title={artist.name} subtitle="" id={artist.browseId} url={"/artist/" + artist.browseId} />)}
+          {artists.map(artist => <Card key={artist.browseId} imgUrl={playListArrayOrObject(artist)} title={artist.name} subtitle="" id={artist.browseId} url={"/artist/" + artist.browseId} />)}
         </div>
       </>}
 
     { albums.length > 0 && <>
         <h2>Albums</h2>
           <div className="searchResult-results">
-            {albums.map(album => <Card key={album.browseId} imgUrl={album.thumbnails[0].url} title={album.name} subtitle="" id={album.browseId} url={"/album/" + album.browseId} year={album.year} />)}
+            {albums.map(album => <Card key={album.browseId} imgUrl={playListArrayOrObject(album)} title={album.name} subtitle="" id={album.browseId} url={"/album/" + album.browseId} year={album.year} />)}
           </div>
         </>}
     
     { songs.length > 0 && <> 
         <h2>Songs</h2>
         <div className="searchResult-results">                                                                                                                                                                                      
-           {songs.map(song => <Card key={song.videoId} imgUrl={song.thumbnails[0].url} title={song.name} subtitle="" id={song.videoId} url={"/sound/" + song.videoId} />)}
+           {songs.map(song => <Card key={song.videoId} imgUrl={playListArrayOrObject(song)} title={song.name} subtitle="" id={song.videoId} url={"/sound/" + song.videoId} />)}
         </div>
     </>}
 

@@ -6,7 +6,7 @@ function Card(props) {
 
     return (
         <Link to={url} className="card-link">
-            <div>
+            <div className="cardConten">
                 <img src={imgUrl} className="card-img"/>
                 <p className="card-title">{title}</p>
                 <p className="card-subtitle">{subtitle}</p>
