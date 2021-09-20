@@ -4,12 +4,20 @@ function Artist(props) {
     const {id} = props.match.params; // hämtar ut ID på artist från SearchResult/Card.
     const [result, setResult] = useState(null)
 
-    // UseEffect som hämtar informationen från API:et baserat på ID och visa det i komponenten
+    /**
+     * UseEffect som hämtar informationen från API:et baserat på ID och visa det i komponenten
+     * denna endpointen fungerar inte om man söker på en artist /api/yt/artist/browseId
+     * Söker man på ett band fungerar det.
+     * band id: https://yt-music-api.herokuapp.com/api/yt/artist/UC2oCil_CLZt9xh3FE73H8rg
+     * artist id: https://yt-music-api.herokuapp.com/api/yt/artist/UCE2ou8xElkFc8JSOiuHoofA
+     */
+
     useEffect(async () => {
         let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/" + id)
-        const data = await result.json();
+        let data = await result.json();
     
         setResult(data)
+        console.log(data)
     },[])
 
     const linkSoung = () => {

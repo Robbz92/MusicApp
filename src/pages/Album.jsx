@@ -4,7 +4,6 @@ function Album(props) {
 
     // hämtar ut browseId
     const { id } = props.match.params
-    console.log(id)
 
     /**
      * Skapar en fetch för https://yt-music-api.herokuapp.com/api/yt/search/
@@ -12,17 +11,18 @@ function Album(props) {
      * Skapar en UseEffect för att fetcha data vid inladdning.
      * 
      * [heads up] -> Det finns ingen endpoint så datan här kommer vara likadan som i generella sökningen...Hur gör jag här(?)
+     * 
      */
 
     useEffect(async () => {
-        let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/search/"+ id)
+        let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/"+ id)
         const data = await result.json()
         console.log(data)
     },[])
 
 
-    //  // jag vill kunna dela album på en länk
-     const linkSoung = () => {
+    // jag vill kunna dela album på en länk
+    const linkSoung = () => {
 
         const copyText = "http://localhost:3000"+ props.location.pathname
         /* Copy the text inside the text field */
@@ -33,7 +33,7 @@ function Album(props) {
     }
     return (
         <div>
-             <h1>HEllo from album</h1>
+             <h1>API:et saknar enpoint för albums. Jag kan inte printa ut låtar per album.</h1>
              <button className="album-share-link" onClick={() => linkSoung()}>Share link</button>
         </div>
     )

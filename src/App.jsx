@@ -41,6 +41,7 @@ function App() {
   // we will use async/await to fetch this data
   async function fetchSearch() {
     const herokuappAPI = checkAPI()
+    
     if (inputText !== null) {
       let result = await fetch(herokuappAPI + inputText)
       const data = await result.json();
@@ -52,7 +53,6 @@ function App() {
         return;
       }
 
-      // store the data into our books variable
       console.log(content)
       setSearchPhrase(content);
     }
