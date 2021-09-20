@@ -53,7 +53,6 @@ function App() {
         return;
       }
 
-      // store the data into our books variable
       console.log(content)
       setSearchPhrase(content);
     }

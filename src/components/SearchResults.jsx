@@ -9,6 +9,17 @@ function SearchResults(props) {
   const albums = data.filter(result => result.type === "album");
   const artists = data.filter(result => result.type === "artist")
 
+  /**
+   * Playlist har en egenskap som heter thumbnails som håller i bilderna för spellistorna.
+   * Beroende på om thumbnails.url är en lista eller ett objekt så hanterar vi detta på olika sätt.
+   */
+  function playListArrayOrObject(playlist){
+    if(typeof(playlist.thumbnails.url) === "string") return playlist.thumbnails.url
+    console.log(typeof(playlist.thumbnails.url))
+    console.log(playlist.thumbnails.url)
+    return  playlist.thumbnails[0].url
+  }
+
   return (
     <div className="searchResult">
       { artists.length > 0 && <>
@@ -35,7 +46,7 @@ function SearchResults(props) {
     { playlists.length > 0 && <> 
         <h2>Playlists</h2>
         <div className="searchResult-results">                                                                                            
-            {playlists.map(playlist => <Card key={playlist.browseId} imgUrl={""} title={playlist.title} subtitle={`Author: ${playlist.author}`} id={playlist.browseId} url={"/sound/" + playlist.browseId} type={playlist.type} />)}
+            {playlists.map(playlist => <Card key={playlist.browseId} imgUrl={playListArrayOrObject(playlist)} title={playlist.title} subtitle={`Author: ${playlist.author}`} id={playlist.browseId} url={"/sound/" + playlist.browseId} type={playlist.type} />)}
         </div>
         </>}
     </div>

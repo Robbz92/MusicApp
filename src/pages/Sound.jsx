@@ -9,9 +9,11 @@ function Sound(props) {
     let id = ""
     let browseId = ""
     let player = useRef(null); // används som en variabel som behåller värdet vid varje rendering.
+    console.log(props)
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
+
     /** 
      * Ternary : en låt (videoId) har ca 12 i längd. browseId har mer än 30 längd.
      *  Om längden är mindre än 20 är det en låt annars är det en playlista.
@@ -41,22 +43,25 @@ function Sound(props) {
         });
     }
 
+    /**
+     * Denna funktionen returnerar playerlist med browseId ifall id (songId) inte är null.
+     * Ifall id är mindre än 1 såfall är det en playlist. Då ska test objektet returneras.
+     */
     function func() {
         if (id.length > 1) return
 
-        const test = {
+        const playListObject = {
             autoplay: 1,
             listType: 'playlist',
             list: browseId
         }
 
-        return test
+        return playListObject
     }
 
     // this function triggers when we change song in player
     // can be used to update things, like counters
     function onPlayerStateChange(event) {
-       // console.log(event)
         console.log(player)
          const { author, title } = player.current.getVideoData()
 
@@ -95,14 +100,15 @@ function Sound(props) {
 
     }, [])
 
-    // Jag vill kunna dela en låt på en länk
+    // delar en låt på en länk
     const linkSoung = () => {
 
         const copyText = "http://localhost:3000" + props.location.pathname
-        /* Copy the text inside the text field */
+
+        // lagrar pathen samt id i clipboard
         navigator.clipboard.writeText(copyText);
 
-        /* Alert the copied text */
+        // Bekräftar länken
         alert("Copied the text: " + copyText);
     }
 
