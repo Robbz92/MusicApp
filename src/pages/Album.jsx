@@ -14,12 +14,11 @@ function Album(props) {
      * 
      */
 
-    useEffect(async () => {
-        let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/"+ id)
-        const data = await result.json()
-        console.log(data)
-    },[])
-
+    // useEffect(async () => {
+    //     let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/"+ id)
+    //     const data = await result.json()
+    //     console.log(data)
+    // },[])
 
     // jag vill kunna dela album på en länk
     const linkSoung = () => {
