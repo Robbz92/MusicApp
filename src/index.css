@@ -61,12 +61,9 @@ body{
     display: flex;
     width: 100%; /* Sätter max längd. */
     flex-wrap: wrap; /* Använder sig av wrapper ifall content går över max with. */
-    background-color: rgba(99, 96, 96, 0.5);
+   
 }
 
-.card-title, .card-img, .card-year, .card-type{
-
-} 
 .soud-player-button{
     color: black;
 }
@@ -76,9 +73,6 @@ body{
     color: black;
 }
 
-.card-link{
-
-}
 
 .card-link > div {
     width: 180px;
@@ -89,4 +83,10 @@ body{
 
 .artist-share-link, .album-share-link, .sound-share-link{
     color: black;
+}
+.cardConten{
+    margin: 2vh 2vw;
+}
+.cardConten:hover{
+    background-color: red;
 }
