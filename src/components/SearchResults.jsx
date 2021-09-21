@@ -3,7 +3,12 @@ import Card from "./Card"
 
 function SearchResults(props) {
   const { match, location, data, category } = props;
-
+  
+  /**
+   * data innehåller information från fetchen i searchResult.
+   * Kollar om type i datan är song, album, artist eller playlist för att spara dessa i konstanter.
+   * Dessa konstanter skickas sedan vidare som props till Card.jsx
+   **/
   const songs = data.filter(result => result.type === "song"); // ==> [{ type: "artist", id: "" ....}]
   const playlists = data.filter(result => result.type.indexOf("playlist") != -1); // ==> [{ type: "playlist", id: "" ....}]
   const albums = data.filter(result => result.type === "album");

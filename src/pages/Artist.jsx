@@ -15,7 +15,6 @@ function Artist(props) {
     useEffect(async () => {
         let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/" + id)
         let data = await result.json();
-    
         setResult(data)
         console.log(data)
     },[])

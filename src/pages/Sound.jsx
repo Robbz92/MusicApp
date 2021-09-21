@@ -36,7 +36,7 @@ function Sound(props) {
             height: '0',
             width: '0',
             videoId: id,
-            playerVars: func(),
+            playerVars: isPlayList(),
             events: {
                 'onStateChange': onPlayerStateChange,
             }
@@ -47,7 +47,7 @@ function Sound(props) {
      * Denna funktionen returnerar playerlist med browseId ifall id (songId) inte är null.
      * Ifall id är mindre än 1 såfall är det en playlist. Då ska test objektet returneras.
      */
-    function func() {
+    function isPlayList() {
         if (id.length > 1) return
 
         const playListObject = {
@@ -115,12 +115,12 @@ function Sound(props) {
     return (
 
         <div className="soud-player-buttun-container">
-            <h2>{title} - {author}</h2>
+            <h2>Song: {title}</h2>
             <button className="soud-player-button" onClick={() => handleActions("play")}>Play</button>
             <button className="soud-player-button" onClick={() => handleActions("pause")}>Pause</button>
-            <button className="soud-player-button" onClick={() => handleActions("next")}>Next song</button>
             <button className="soud-player-button" onClick={() => handleActions("previous")}>Previous song</button>
-
+            <button className="soud-player-button" onClick={() => handleActions("next")}>Next song</button>
+            
             <div id="yt-player"></div>
             <button className="sound-share-link" onClick={() => linkSoung()}>Share link</button>
         </div>

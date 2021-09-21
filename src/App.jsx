@@ -7,17 +7,17 @@ import {
   Link
 } from "react-router-dom"
 
+// importerar komponenter och pages
 import Album from './pages/Album';
 import Artist from './pages/Artist';
 import Sound from './pages/Sound'; 
-
 import SearchResults from './components/SearchResults'
 
 function App() {
   // sparar värdet från input
   const [inputText, setInputText] = useState(null)
-  const [category, setCategory] = useState(); // "all", "album", "artist", "sound"
-  const categories = ["all", "album", "artist", "sound", "playlist"]
+  const [category, setCategory] = useState(); // "All", "Album", "Artist", "SoundTrack"
+  const categories = ["All", "Album", "Artist", "SoundTrack", "Playlist"]
 
   let textInput = React.createRef();
 
@@ -32,22 +32,23 @@ function App() {
 
   // kollar min nuvarande path byter url baserat på det.
   const checkAPI = () =>{
-    if (category === "all" || category === "album") return "https://yt-music-api.herokuapp.com/api/yt/search/"
-    if (category === "artist") return "https://yt-music-api.herokuapp.com/api/yt/artists/"
-    if (category === "sound") return "https://yt-music-api.herokuapp.com/api/yt/songs/"
-    if (category === "playlist") return "https://yt-music-api.herokuapp.com/api/yt/playlists/"
+    if (category === "All" || category === "Album") return "https://yt-music-api.herokuapp.com/api/yt/search/"
+    if (category === "Artist") return "https://yt-music-api.herokuapp.com/api/yt/artists/"
+    if (category === "SoundTrack") return "https://yt-music-api.herokuapp.com/api/yt/songs/"
+    if (category === "Playlist") return "https://yt-music-api.herokuapp.com/api/yt/playlists/"
   }
 
   // we will use async/await to fetch this data
   async function fetchSearch() {
     const herokuappAPI = checkAPI()
-    
+    if (inputText === null) setCategory("Make a search before filtering it!")
     if (inputText !== null) {
       let result = await fetch(herokuappAPI + inputText)
       const data = await result.json();
       const { content } = data
 
-      if (category === "album") {
+      //Ifall vi väljer album så använder den samma endpoint som "all" såfall ska jag bara lista ut album från listan.
+      if (category === "Album") {
         const albums = content.filter(item => item.type === "album")
         setSearchPhrase(albums)
         return;

@@ -13,13 +13,7 @@ function Album(props) {
      * [heads up] -> Det finns ingen endpoint så datan här kommer vara likadan som i generella sökningen...Hur gör jag här(?)
      * 
      */
-
-    // useEffect(async () => {
-    //     let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/"+ id)
-    //     const data = await result.json()
-    //     console.log(data)
-    // },[])
-
+    
     // jag vill kunna dela album på en länk
     const linkSoung = () => {
 
