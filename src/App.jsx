@@ -17,7 +17,7 @@ function App() {
   // sparar värdet från input
   const [inputText, setInputText] = useState(null)
   const [category, setCategory] = useState(); // "All", "Album", "Artist", "SoundTrack"
-  const categories = ["All", "Album", "Artist", "SoundTrack", "Playlist"]
+  const categories = ["All", "Albums", "Artists", "Songs", "Playlists"]
 
   let textInput = React.createRef();
 
@@ -32,10 +32,10 @@ function App() {
 
   // kollar min nuvarande path byter url baserat på det.
   const checkAPI = () =>{
-    if (category === "All" || category === "Album") return "https://yt-music-api.herokuapp.com/api/yt/search/"
-    if (category === "Artist") return "https://yt-music-api.herokuapp.com/api/yt/artists/"
-    if (category === "SoundTrack") return "https://yt-music-api.herokuapp.com/api/yt/songs/"
-    if (category === "Playlist") return "https://yt-music-api.herokuapp.com/api/yt/playlists/"
+    if (category === "All" || category === "Albums") return "https://yt-music-api.herokuapp.com/api/yt/search/"
+    if (category === "Artists") return "https://yt-music-api.herokuapp.com/api/yt/artists/"
+    if (category === "Songs") return "https://yt-music-api.herokuapp.com/api/yt/songs/"
+    if (category === "Playlists") return "https://yt-music-api.herokuapp.com/api/yt/playlists/"
   }
 
   // we will use async/await to fetch this data
@@ -48,7 +48,7 @@ function App() {
       const { content } = data
 
       //Ifall vi väljer album så använder den samma endpoint som "all" såfall ska jag bara lista ut album från listan.
-      if (category === "Album") {
+      if (category === "Albums") {
         const albums = content.filter(item => item.type === "album")
         setSearchPhrase(albums)
         return;
