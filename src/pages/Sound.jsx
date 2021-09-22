@@ -115,12 +115,12 @@ function Sound(props) {
     return (
 
         <div className="soud-player-buttun-container">
-            <h2>Song: {title}</h2>
+            <h2>{title}</h2>
             <button className="soud-player-button" onClick={() => handleActions("play")}>Play</button>
             <button className="soud-player-button" onClick={() => handleActions("pause")}>Pause</button>
             <button className="soud-player-button" onClick={() => handleActions("previous")}>Previous song</button>
             <button className="soud-player-button" onClick={() => handleActions("next")}>Next song</button>
-            
+
             <div id="yt-player"></div>
             <button className="sound-share-link" onClick={() => linkSoung()}>Share link</button>
         </div>

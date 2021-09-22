@@ -75,7 +75,6 @@ function App() {
       <div>
         <div className="search">
           <input type="text" ref={textInput} placeholder="Search for music/artists or albums" onChange={searchFunction}></input>
-          {/* <button onClick={fetchSearch}>Search</button> */}
         </div>
         {categories.map(category => (
             <button className="FilterButton" onClick={() => setCategory(category)} key={category}>{category}</button>
@@ -84,6 +83,7 @@ function App() {
       </div>
 
       <Switch>
+        {/* Renderar react element in i DOM */}
         <Route exact path="/" render={(routeProps) => <SearchResults {...routeProps} data={searchPhrase} category={category}/>} />
         <Route path="/artist/:id" component={Artist}/>
         <Route path="/album/:id" component={Album}/>

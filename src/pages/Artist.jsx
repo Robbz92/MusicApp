@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 function Artist(props) {
     const {id} = props.match.params; // hämtar ut ID på artist från SearchResult/Card.
     const [result, setResult] = useState(null)
+    const [thumbnails, setThumbnails] = useState([])
 
     /**
      * UseEffect som hämtar informationen från API:et baserat på ID och visa det i komponenten
@@ -16,6 +17,8 @@ function Artist(props) {
         let result = await fetch("https://yt-music-api.herokuapp.com/api/yt/artist/" + id)
         let data = await result.json();
         setResult(data)
+
+        setThumbnails(data.thumbnails[0].url)
         console.log(data)
     },[])
 
@@ -36,6 +39,7 @@ function Artist(props) {
     return (
         <div>
             <div>
+               <img src={thumbnails}></img>
                <p className="artist-band">Band: {result.name}</p>
                <p className="artist-description">Description: {result.description}</p>
                <p>Total viws: {result.views}</p>
